@@ -5,47 +5,51 @@ class SingletonForURL {
             this._URL = "https://jsonplaceholder.typicode.com/posts";
             SingletonForURL._instance = this;     
        }
-    else return SingletonForURL._instance;
+     return SingletonForURL._instance;
     }
-
-    async getSingletonForURL (){
+     async  getSingletonForURL (){
             let fetchedData = await fetch(this._URL) ;
             let data = await fetchedData.json();
-        //   console.log(data)
+       
             return data
     }
 
-    //   getSingletonForURL (){
-    //        return  fetch("https://jsonplaceholder.typicode.com/posts").then((responce)=> responce.json())
-    //        .then((data) => console.log(data))
-    //   }
-
+   
 
     async groupBy(someKey){
 
         let fetchedData = await fetch(this._URL) ;
         let data = await fetchedData.json();
-     console.log(data)
-       
-       let res = data.filter((element) => element[someKey]);
-       console.log(res)
-       
+        let 
+       variants = []
 
-        // let res = [];
-        // let fetched = await fetch(this._URL);
-        // let data = fetched.json();
-        // console.log(data)
-        // .then((data)=>{data.filter((element) => element[someKey])})
+       let res = data.forEach((element) => {
+         variants.push(element[someKey])
+       });
 
-        // console.log("aa",aa)
+       let counted = new Set(...[variants])
+       console.log(counted)
+       let countedToArr = [...counted]
+       
+       
+       let resObject = {};
+
+       countedToArr.forEach((element) => resObject[element]=[])
+       console.log(resObject)
+       let finalResult = [];
+
+       data.forEach((element) => resObject[element[someKey]].push({someKey:element[someKey]}) )
+       console.log(resObject)
+  
     }
-
 }
 
+
+
 const url1 = new SingletonForURL();
-// const url2 = new SingletonForURL();
-// console.log(url1===url2)
-// console.log(url1.getSingletonForURL())
+const url2 = new SingletonForURL();
+console.log(url1===url2)
+console.log(url1.getSingletonForURL())
 
 console.log(url1.groupBy("userId"))
 
