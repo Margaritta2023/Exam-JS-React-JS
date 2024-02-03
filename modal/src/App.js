@@ -15,12 +15,19 @@ const App = () => {
     setIsModalOpen(false);
   };
 
+  const validationSchema = Yup.object().shape({
+    text: Yup.string() .required("Please enter name"),
+     textarea:Yup.string() .required("Please enter name"),
+    textarea: Yup.string()
+   .min(20, "To Short!")
+   .required("Please enter your message"),
+});
 
-  const validationSchema = Yup.object({
-    text: Yup.string().required('Required'),
-    textarea: Yup.string().required('Required'),
-    select: Yup.string().required('Required'),
-  });
+  // const validationSchema = Yup.object({
+  //   text: Yup.string().required('Required'),
+  //   textarea: Yup.string().required('Required'),
+  //   select: Yup.string().required('Required'),
+  // });
 
   const initialValues = { text: '', textarea: '' , select: ""};
 
