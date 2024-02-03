@@ -71,7 +71,7 @@ const App = () => {
       name="text"
       value={values.text} 
       onChange={handleChange}
-      error={!!(errors.textarea && touched.text)}
+      error={!!(errors.text && touched.text)}
       
        /><br/>
 
