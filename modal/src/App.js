@@ -17,7 +17,7 @@ const App = () => {
 
 
   const validationSchema = Yup.object({
-    text: Yup.string().email('Invalid email address').required('Required'),
+    text: Yup.string().required('Required'),
     textarea: Yup.string().required('Required'),
     select: Yup.string().required('Required'),
   });
@@ -95,16 +95,3 @@ const App = () => {
 
 export default App;
 
-
-
-
-
-
-//             type="text"
-//             name="surName"
-//             value={values.surName}
-//             onChange={handleChange}
-//             error={!!(errors.surName && touched.surName)}
-//             helperText={errors.surName && touched.surName && errors.surName}
-//             fullWidth
-//             margin="normal"
